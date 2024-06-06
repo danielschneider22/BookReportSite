@@ -15,8 +15,6 @@ import { ref, set, onValue, push } from 'firebase/database';
 import { database } from "@/lib/firebase"
 import { combineBookReports, compareAuthors, formatDate, getUniqueVals } from "@/lib/utils"
 
-import { useSearchParams } from 'react-router-dom';
-
 
 type FilterType = {
   genre: string[],
@@ -55,7 +53,7 @@ export default function Component() {
     }
     
     const dataRef = ref(database, '/bookreviews');
-    onValue(dataRef, (snapshot) => {
+    onValue(dataRef, (snapshot: any) => {
       const data = snapshot.val();
       setData(data);
     });
